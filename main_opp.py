@@ -294,11 +294,11 @@ def student_rating(student_list, course_name):
     sum_all = 0
     count_all = 0
     for stud in student_list:
-        if stud.courses_in_progress == [course_name]:
+        if course_name in stud.courses_in_progress:
             sum_all += stud.average_rating
         count_all += 1
         average_for_all = sum_all / count_all
-        return average_for_all
+        return f'{average_for_all:.2f}'
 
 """Функция для подсчета средней оценки за лекции всех лекторов в рамках курса
  в качестве аргумента принимает список лекторов и название курса"""
@@ -308,11 +308,11 @@ def lecturer_rating(lecturer_list, course_name):
     sum_all = 0
     count_all = 0
     for lect in lecturer_list:
-        if lect.courses_attached == [course_name]:
+        if course_name in lect.courses_attached:
             sum_all += lect.average_rating
             count_all += 1
     average_for_all = sum_all / count_all
-    return average_for_all
+    return f'{average_for_all:.2f}'
 
 
 # Выводим результат подсчета средней оценки по всем студентам для данного курса
